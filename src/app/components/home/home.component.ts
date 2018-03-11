@@ -11,6 +11,9 @@ export class HomeComponent implements OnInit {
   title: string = 'Home';
   counter: number = 0;
 
+  homeLikes: number = 1000;
+  today: Date = new Date();
+
   constructor() { }
 
   ngOnInit() {
@@ -27,7 +30,7 @@ export class HomeComponent implements OnInit {
     console.log("incr");
     this.counter += 1;
 
-    console.trace();
+    //console.trace();
   }
 
 }

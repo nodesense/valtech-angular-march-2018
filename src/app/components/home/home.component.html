@@ -1,4 +1,4 @@
-<h2>{{title}}</h2>
+<h2>{{title | uppercase}}</h2>
 
 <!-- 
  {{}} interpolation
@@ -22,26 +22,43 @@
     -1
 </button>
 
-
 <span>Price</span>
 <!-- two way binding == input + output binding
  [()] - sugar
 -->
 
-<input [(ngModel)]="price" />
+<input [(ngModel)]="price" type="number" />
 
-<p> Price is {{price}} </p>
+<p> Price is {{price | currency:'INR'}} </p>
 
 <p> Option 2 two way binding</p>
 
 <!-- two way binding, output should have 
      input name + "Change" -->
-     
+
 <input [ngModel]="price" 
        (ngModelChange)="price = $event"
+       type="number"
 
 />
 
-<app-like>
+<p> Home Likes {{homeLikes}}</p>
+<!-- 
+<app-like [likes]="homeLikes"
+          (likesChange)="homeLikes = $event"
+>
     
+</app-like> -->
+
+<app-like [(likes)]="homeLikes">
 </app-like>
+
+<p> Date {{today | date:'ddMMM:yyyy' | uppercase}}</p>
+
+<p> Power 4^2 = {{ 4 | power:2 }}</p>
+
+<p> Power 3 = {{ 3 | power  }}</p>
+
+<p> Power counter^2 = {{ counter | power:2  }}</p>
+
+<p> Power 2^counter = {{ 2 | power:counter  }}</p>
