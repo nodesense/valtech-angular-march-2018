@@ -54,7 +54,9 @@
     
 </app-like> -->
 
-<app-like [(likes)]="homeLikes">
+<app-like [(likes)]="homeLikes" 
+          *ngIf="counter % 2 == 1"  
+>
 </app-like>
 
 <p> Date {{today | date:'ddMMM:yyyy' | uppercase}}</p>

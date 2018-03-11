@@ -6,6 +6,7 @@ import { LikeComponent } from './components/like/like.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { PowerPipe } from './pipes/power.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { DataService } from './services/data.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,12 @@ import { FilterPipe } from './pipes/filter.pipe';
       HighlightDirective, 
       PowerPipe, 
       FilterPipe
+    ],
+
+    // module prodiver
+    // signle instance per application
+    providers: [
+      DataService
     ]
 })
 export class SharedModule { }
