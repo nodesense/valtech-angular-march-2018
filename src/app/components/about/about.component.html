@@ -1,0 +1,31 @@
+<h2>About</h2>
+
+<button (click)="addMember()">
+  Add
+</button>
+
+<button (click)="members = []">
+  Empty
+</button>
+
+<button (click)="show = !show">
+  {{show? "Hide": "Show"}}
+</button>
+
+<div [ngClass]="{highlightBg: highlight}" 
+     (mouseenter)="highlight = true"
+     (mouseleave)="highlight = false" 
+
+>
+  <ul *ngIf="show == true else listNotShown">
+    <li *ngFor="let member of members;let k=index;">
+      {{k}}-{{member.name}}
+    </li>
+  </ul>
+</div>
+
+
+<!-- Angular 4.0 feature else for ngIf -->
+<ng-template #listNotShown>
+  <p>List is not shown</p>
+</ng-template>

@@ -1,0 +1,47 @@
+<h2>{{title}}</h2>
+
+<!-- 
+ {{}} interpolation
+ () - event binding
+ [] - property binding
+-->
+
+<input [value]="counter * 2" />
+
+<p>Counter: {{counter}}</p>
+
+<p>Counter * 3: {{counter * 3}}</p>
+
+<div (click)="parentClick()">
+    <button (click)='increment($event)'>
+        +1
+    </button>
+</div>
+
+<button (click)='counter = counter - 1'>
+    -1
+</button>
+
+
+<span>Price</span>
+<!-- two way binding == input + output binding
+ [()] - sugar
+-->
+
+<input [(ngModel)]="price" />
+
+<p> Price is {{price}} </p>
+
+<p> Option 2 two way binding</p>
+
+<!-- two way binding, output should have 
+     input name + "Change" -->
+     
+<input [ngModel]="price" 
+       (ngModelChange)="price = $event"
+
+/>
+
+<app-like>
+    
+</app-like>

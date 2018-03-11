@@ -1,0 +1,23 @@
+<div>
+    <app-header>
+    </app-header>
+    
+    <app-home>
+    </app-home>
+
+    <app-about>
+    </app-about>
+
+    <app-contact>
+    </app-contact>
+    
+    <app-footer [year]="year + 1" 
+                [x-title]="appTitle"
+                (contactEvent)="fromChild($event)"
+                
+                >
+    </app-footer>
+
+     
+
+</div>

@@ -1,0 +1,18 @@
+ng new product-app
+cd product-app
+
+npm install jquery --save
+npm install @types/jquery --save-dev
+
+ng g module components/home
+....
+
+ng g module shared
+
+ng g component shared/components/address
+ng g component shared/components/like
+ng g directive shared/directives/highlight
+ng g pipe shared/pipes/power
+ng g pipe shared/pipes/filter
+ng g service shared/services/data
+

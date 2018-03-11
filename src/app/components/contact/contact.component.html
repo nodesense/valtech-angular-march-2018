@@ -1,0 +1,35 @@
+<div #rootDiv>
+  <h2>Contact</h2>
+
+  <!-- # template reference variable -->
+
+  <input #name />
+
+  <p #para1>
+
+  </p>
+
+  <p >
+    P2
+  </p>
+
+  <button (click)="name.focus()">
+    Focus
+  </button>
+
+  <button (click)="name.value ='' ">
+      Clear
+  </button>
+
+
+  <button (click)="para1.textContent = name.value ">
+      Set Text
+  </button>
+    
+
+  <!-- elvis ?. for null check -->
+
+  <span> City: {{address?.city}}, 
+      Pin : {{address?.pincode}}</span>
+
+</div>
