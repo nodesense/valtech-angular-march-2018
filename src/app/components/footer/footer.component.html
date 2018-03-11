@@ -1,9 +1,15 @@
-<div>
+<div appHighlight #myDirective="appHighlight">
   <hr />
   
   <p>Copyrights @{{year}}, {{appTitle}}</p>
 
   <button (click)="contact()">
      Contact Us
+  </button>
+
+  <p> Highlight color {{myDirective.color}}</p>
+  
+  <button (click)="myDirective.setColor('yellow')">
+    Set Color
   </button>
 </div>

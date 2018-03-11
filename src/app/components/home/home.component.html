@@ -6,7 +6,11 @@
  [] - property binding
 -->
 
-<input [value]="counter * 2" />
+<input  appHighlight 
+        [value]="counter * 2"
+        *ngIf="counter % 3 != 0"
+        
+        />
 
 <p>Counter: {{counter}}</p>
 

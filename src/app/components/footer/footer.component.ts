@@ -2,8 +2,11 @@ import { Component, OnInit,
          Input,
         
          Output,
-         EventEmitter
+         EventEmitter,
+
+         ViewChild
         } from '@angular/core';
+import { HighlightDirective } from '../../shared/directives/highlight.directive';
 
 @Component({
   selector: 'app-footer',
@@ -11,6 +14,11 @@ import { Component, OnInit,
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+
+  // Get access to directive
+  @ViewChild('myDirective')
+  highlightDirective: HighlightDirective;
+
 
   // property binding [parent to child]
 
@@ -29,6 +37,8 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     console.log("year ", this.year, typeof this.year);
+
+    this.highlightDirective.setColor('lightblue');
   }
 
   contact() {
