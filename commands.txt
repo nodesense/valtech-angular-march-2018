@@ -16,3 +16,16 @@ ng g component shared/components/like
 ng g pipe shared/pipes/filter
 ng g service shared/services/data
 
+
+ng g module product
+ng g component product/product-home
+ng g component product/product-list
+ng g component product/product-edit
+ng g component product/product-search
+
+ng g service product/services/product
+ng g class product/models/product
+ng g class product/models/brand
+
+
+

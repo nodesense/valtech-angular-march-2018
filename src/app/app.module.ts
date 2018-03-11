@@ -16,6 +16,29 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+import {RouterModule, Routes} from '@angular/router';
+import { ProductModule } from './product/product.module';
+
+const routes: Routes = [
+    {
+        path: '',
+        component: HomeComponent
+    },
+    {
+        path: 'about',
+        component: AboutComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
+    },
+    {
+        path: '**',
+        component: NotFoundComponent
+    }
+];
 
 
 @NgModule({
@@ -23,7 +46,12 @@ import { SharedModule } from './shared/shared.module';
         BrowserModule,
         FormsModule,
 
-        SharedModule
+        SharedModule,
+        // creates router module, based on routes
+        RouterModule.forRoot(routes),
+
+        //TODO: lazy load
+        ProductModule
         // InventoryModule
     ],
 
@@ -34,7 +62,8 @@ import { SharedModule } from './shared/shared.module';
         AboutComponent,
         ContactComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        NotFoundComponent
         // HeaderComponent,
         // FooterComponent,
         // HomeComponent 
