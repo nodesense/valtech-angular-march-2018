@@ -1,16 +1,38 @@
-<h2>Product Edit</h2>
+<h2>Product Edit - {{product.name}} </h2>
 
 <button (click)="gotoList()">
   List
 </button>
 
-<form>
+<form   (ngSubmit)="saveProduct()"
+        #productForm="ngForm"
+
+
+>
+
+<p *ngIf="productForm.invalid">
+  Invalid form data
+</p>
+
+<p *ngIf="productForm.dirty">
+     form data changed
+</p>
+
  <label>Name</label>
  <input name="name"
         [(ngModel)]="product.name" 
         type="text"
 
+      required
+      minlength="3"
+
+      #productName="ngModel"
+
   />
+
+  <p *ngIf="productName.invalid">
+     Invalid Name
+  </p>
 
   <label>Price</label>
   <input name="price"
@@ -45,6 +67,10 @@
       </option>
   
    </select>
+
+   <button type="submit">
+     Save
+   </button>
 
 
 </form>

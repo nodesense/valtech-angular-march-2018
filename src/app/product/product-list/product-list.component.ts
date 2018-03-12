@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { CartItem, DataService } from '../../shared/services/data.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product-list',
@@ -10,9 +11,11 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  products: Product[] = [];
+  //products: Product[] = [];
 
-  subscription: Subscription;
+  products$: Observable<Product[]>;
+
+  //subscription: Subscription;
 
   cartSubscription: Subscription;
 
@@ -21,18 +24,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
   fieldName: string;
   predicate: string;
   expectedValue: any;
+ 
 
   constructor(private productService: ProductService,
               private dataService: DataService
         ) { }
 
   ngOnInit() {
-    this.subscription = this.productService
-        .getProducts()
-        .subscribe ( products => {
-            this.products = products;
-            console.log("got products", products);
-        });
+      this.products$ = this.productService.getProducts();
+
+    // this.subscription = this.productService
+    //     .getProducts()
+    //     .subscribe ( products => {
+    //         this.products = products;
+    //         console.log("got products", products);
+    //     });
 
 
     this.cartSubscription = this.dataService.cartItemsSource
@@ -44,7 +50,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
    // if (!this.subscription.closed) {
-      this.subscription.unsubscribe();
+    //  this.subscription.unsubscribe();
 
 
     //}

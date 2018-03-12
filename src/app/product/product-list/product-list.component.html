@@ -1,5 +1,7 @@
 <h2>Product List [Cart {{cartItems.length}}] </h2>
 
+ 
+
 <label >Field Name</label>
 <select [(ngModel)]="fieldName">
   <option value='price'>Price</option>
@@ -28,7 +30,9 @@
       <th>Delete</th>
     </tr>
 
-    <tr *ngFor="let product of (products | filter:fieldName:predicate:expectedValue)">
+
+
+    <tr *ngFor="let product of (products$ | async | filter:fieldName:predicate:expectedValue)">
       <td>
         <a [routerLink]="['/', 'products', 'edit', product.id]">
             {{product.name}}

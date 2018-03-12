@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 // GET /api/products/34345
 // Edit existing data (id exist) or create new one (id is not present)
@@ -10,12 +10,18 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { Brand } from '../models/brand';
 
+import {NgForm} from '@angular/forms';
+
+
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
+
+  @ViewChild('productForm')
+  form: NgForm;
 
   product: Product = new Product(); // create
   brands: Brand[] = [];
@@ -44,7 +50,26 @@ export class ProductEditComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigateByUrl("/products"); //products/list
+    this.router.navigateByUrl('/products'); //products/list
+  }
+
+  saveProduct() {
+    console.log(' product to save', this.product);
+
+    if (this.form.invalid) {
+      alert('Invalid form data');
+      return;
+    }
+
+    this.productService
+    .saveProduct(this.product)
+    .subscribe ( savedProduct => {
+      // option 1: continue working same form
+      this.product = savedProduct;
+
+      // option 2: go to list page
+      this.gotoList();
+    });
   }
  
 }
