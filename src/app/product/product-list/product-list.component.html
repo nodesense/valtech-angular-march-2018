@@ -28,8 +28,13 @@
       <th>Delete</th>
     </tr>
 
-    <tr *ngFor="let product of products">
-      <td>{{product.name}}</td>
+    <tr *ngFor="let product of (products | filter:fieldName:predicate:expectedValue)">
+      <td>
+        <a [routerLink]="['/', 'products', 'edit', product.id]">
+            {{product.name}}
+        </a>
+       
+      </td>
       <td>{{product.price}}</td>
       <td>{{product.year}}</td>
       <td>{{product.weight}}</td>

@@ -23,7 +23,7 @@ const routes: Routes = [
         component: ProductEditComponent
       },
       {
-        path: 'edit/:id',
+        path: 'edit/:id', 
         component: ProductEditComponent
       }, {
         path: 'search',
@@ -37,6 +37,7 @@ import {FormsModule,
         ReactiveFormsModule} 
         from '@angular/forms';
 import { ProductService } from './services/product.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -45,7 +46,9 @@ import { ProductService } from './services/product.service';
     ReactiveFormsModule, 
     
     // Fixme: forClient
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+
+    SharedModule
   ],
   declarations: [ProductHomeComponent, 
                  ProductListComponent, 
