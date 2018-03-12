@@ -27,12 +27,14 @@ export class RequestInterceptorService implements HttpInterceptor  {
     }
 
     //TODO: Inject token
-
-    request = request.clone({
-      setHeaders: {
-        Authorization: `JWT ${this.authService.token}`
-      }
-    });
+    if (this.authService.isAuthenticated()) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `JWT ${this.authService.token}`
+        }
+      });
+    }
+    
     
     return next.handle(request);
   }
