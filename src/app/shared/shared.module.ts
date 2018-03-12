@@ -7,17 +7,34 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { PowerPipe } from './pipes/power.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { DataService } from './services/data.service';
+import { LoginComponent } from './components/login/login.component';
+
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = [
+    {
+        path: 'login',
+        component: LoginComponent
+    }
+];
+
+import {FormsModule} from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+import { SaveAlertGuard } from './guards/save-alert.guard';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [
     AddressComponent, 
     LikeComponent, 
     HighlightDirective, 
     PowerPipe, 
-    FilterPipe],
+    FilterPipe, LoginComponent],
 
     exports: [
       // allow other module to use component, directive, pipes
@@ -31,7 +48,10 @@ import { DataService } from './services/data.service';
     // module prodiver
     // signle instance per application
     providers: [
-      DataService
+      DataService,
+      AuthService, 
+      AuthGuard,
+      SaveAlertGuard
     ]
 })
 export class SharedModule { }

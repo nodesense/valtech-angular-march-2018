@@ -9,7 +9,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'products',
+    path: '', // products is coming from lazy load
     component: ProductHomeComponent,
 
     // nested nav
@@ -45,8 +45,8 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     ReactiveFormsModule, 
     
-    // Fixme: forClient
-    RouterModule.forRoot(routes),
+    // Fixme: forChild, for lazy load
+    RouterModule.forChild(routes),
 
     SharedModule
   ],
