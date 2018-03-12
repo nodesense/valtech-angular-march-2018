@@ -4,5 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  buildName: 'debug',
+  apiEndPoint: "http://localhost:7070",
+  authEndPoint: 'http://localhost:7070/oauth/token'
 };

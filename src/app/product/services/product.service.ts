@@ -4,6 +4,10 @@ import {HttpClient} from '@angular/common/http';
 import { Product } from '../models/product';
 import { Observable } from 'rxjs/Observable';
 
+import { environment } from '../../../environments/environment';
+
+console.log("ENV", environment);
+
 @Injectable()
 export class ProductService {
 
@@ -12,7 +16,7 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.
-           http.get<Product[]>('http://localhost:7070/delayed/api/products');
+           http.get<Product[]>(`${environment.apiEndPoint}/api/products`);
   }
 
 }
