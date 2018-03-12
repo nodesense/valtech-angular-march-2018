@@ -1,3 +1,48 @@
-<p>
-  product-list works!
-</p>
+<h2>Product List [Cart {{cartItems.length}}] </h2>
+
+<label >Field Name</label>
+<select [(ngModel)]="fieldName">
+  <option value='price'>Price</option>
+  <option value='year'>Year</option>
+  <option value='weight'>Weight</option>
+</select>
+
+<label>Condition</label>
+<select [(ngModel)]="predicate">
+  <option value="gt"> &gt; </option>
+  <option value="lt"> &lt; </option>
+</select>
+
+<label>Value</label> 
+<input [(ngModel)]="expectedValue" />
+
+<p> Filtering for {{fieldName}} {{predicate}} {{expectedValue}} </p>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Year</th>
+      <th>Weight</th>
+      <th>Delete</th>
+    </tr>
+
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.year}}</td>
+      <td>{{product.weight}}</td>
+
+      <td>
+          <button (click)="deleteProduct(product.id)">
+             Delete
+          </button>
+
+          <button (click)="addToCart(product)">
+              +Cart
+           </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

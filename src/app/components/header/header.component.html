@@ -17,6 +17,14 @@
   </a>
 
 
+  <a routerLink="/cart"
+     routerLinkActive="success"
+     class="button"
+  >
+    Cart [ {{cartItems.length}} ]
+  </a>
+
+
   <a routerLink="/about"
      routerLinkActive="success"
      class="button"
@@ -30,6 +38,10 @@
   >
     Contact
   </a>
+
+  <button (click)="emptyCart()">
+    Empty Cart
+  </button>
 
   <hr />
 </div>

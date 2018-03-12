@@ -3,9 +3,10 @@
   <h2>Product Home</h2>
   
   <div>
-     <a routerLink="/products/list"
+     <a routerLink="/products"
         class="button"
         routerLinkActive="success"
+        [routerLinkActiveOptions]="{exact:true}"
      >
         List
     </a>
@@ -28,7 +29,7 @@
 
 
   <router-outlet>
-    
+
   </router-outlet>
 
 </div>

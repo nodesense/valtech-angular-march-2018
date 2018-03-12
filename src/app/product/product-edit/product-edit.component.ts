@@ -11,5 +11,5 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

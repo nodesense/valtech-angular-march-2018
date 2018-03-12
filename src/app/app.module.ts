@@ -21,6 +21,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ProductModule } from './product/product.module';
 
+// Angular 4.3 onwards
+// includes simple apis
+// interceptors [auth]
+import {HttpClientModule} from '@angular/common/http';
+
+
 const routes: Routes = [
     {
         path: '',
@@ -45,6 +51,7 @@ const routes: Routes = [
     imports: [
         BrowserModule,
         FormsModule,
+        HttpClientModule,
 
         SharedModule,
         // creates router module, based on routes

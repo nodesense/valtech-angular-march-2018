@@ -15,7 +15,7 @@ const routes: Routes = [
     // nested nav
     children: [
       {
-        path: 'list',
+        path: '',
         component: ProductListComponent
       }, 
       {
@@ -36,6 +36,7 @@ const routes: Routes = [
 import {FormsModule, 
         ReactiveFormsModule} 
         from '@angular/forms';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   imports: [
@@ -49,6 +50,10 @@ import {FormsModule,
   declarations: [ProductHomeComponent, 
                  ProductListComponent, 
                  ProductEditComponent, 
-                 ProductSearchComponent]
+                 ProductSearchComponent],
+
+  providers: [
+    ProductService
+  ]
 })
 export class ProductModule { }
