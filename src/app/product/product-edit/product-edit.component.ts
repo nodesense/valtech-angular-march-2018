@@ -67,6 +67,8 @@ export class ProductEditComponent implements OnInit {
       // option 1: continue working same form
       this.product = savedProduct;
 
+      this.form.reset(savedProduct);
+
       // option 2: go to list page
       this.gotoList();
     });

@@ -39,9 +39,28 @@
     Contact
   </a>
 
+
+
+  <a routerLink="/login"
+     routerLinkActive="success"
+     class="button"
+     *ngIf="!(authSource$ | async)"
+  >
+    Login
+  </a>
+
+  <button (click)="logout()"
+          *ngIf="(authSource$ | async)"
+  >
+    Logout
+  </button>
+
+
   <button (click)="emptyCart()">
     Empty Cart
   </button>
+
+
 
   <hr />
 </div>

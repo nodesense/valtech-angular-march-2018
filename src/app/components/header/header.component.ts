@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, CartItem } from '../../shared/services/data.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +14,16 @@ export class HeaderComponent implements OnInit {
 
   cartItems: CartItem[] = [];
 
+  authSource$: Observable<boolean>;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.authSource$ = this.authService.authSource;
+
+
     this.totalCount = this.dataService.cartItems.length;
   
     // workaround
@@ -31,6 +39,10 @@ export class HeaderComponent implements OnInit {
 
   emptyCart() {
     this.dataService.empty();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

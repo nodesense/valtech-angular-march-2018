@@ -7,6 +7,14 @@ import { ProductSearchComponent } from './product-search/product-search.componen
 
 import {Routes, RouterModule} from '@angular/router';
 
+import {FormsModule, 
+  ReactiveFormsModule} 
+  from '@angular/forms';
+import { ProductService } from './services/product.service';
+import { SharedModule } from '../shared/shared.module';
+import { SaveWorkGuardService } from './services/save-work-guard.service';
+
+
 const routes: Routes = [
   {
     path: '', // products is coming from lazy load
@@ -20,11 +28,13 @@ const routes: Routes = [
       }, 
       {
         path: 'create',
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        canDeactivate: [SaveWorkGuardService]
       },
       {
         path: 'edit/:id', 
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        canDeactivate: [SaveWorkGuardService]
       }, {
         path: 'search',
         component: ProductSearchComponent
@@ -32,12 +42,6 @@ const routes: Routes = [
     ]
   }
 ];
-
-import {FormsModule, 
-        ReactiveFormsModule} 
-        from '@angular/forms';
-import { ProductService } from './services/product.service';
-import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -56,7 +60,8 @@ import { SharedModule } from '../shared/shared.module';
                  ProductSearchComponent],
 
   providers: [
-    ProductService
+    ProductService,
+    SaveWorkGuardService
   ]
 })
 export class ProductModule { }
