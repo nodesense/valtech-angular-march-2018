@@ -1,3 +1,50 @@
-<p>
-  product-edit works!
-</p>
+<h2>Product Edit</h2>
+
+<button (click)="gotoList()">
+  List
+</button>
+
+<form>
+ <label>Name</label>
+ <input name="name"
+        [(ngModel)]="product.name" 
+        type="text"
+
+  />
+
+  <label>Price</label>
+  <input name="price"
+         [(ngModel)]="product.price" 
+         type="number"
+ 
+   />
+
+
+  <label>Year</label>
+  <input name="year"
+         [(ngModel)]="product.year" 
+         type="number"
+ 
+   />
+
+
+  <label>Weight</label>
+  <input name="weight"
+         [(ngModel)]="product.weight" 
+         type="string"
+   />
+
+   <label>Brand</label>
+   <select name="brandId"
+           [(ngModel)]="product.brandId">
+       
+      <option [value]="brand.id"
+              *ngFor="let brand of brands"
+      >
+          {{brand.name}}
+      </option>
+  
+   </select>
+
+
+</form>
